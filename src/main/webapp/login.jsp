@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : Feb 12, 2023, 9:09:40 AM
-    Author     : huynh chi hai
+    Author     : Huynh Chi Hai
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,7 +11,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>FIVESTORE - Dietary supplemental shop</title>
+        <title>FIVESTORE - Login</title>
         <link rel="icon" type="image/x-icon" href="HCDATAFILE/img/logo-only.png">
         <!-- Font Awesome -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -87,7 +87,7 @@
         </header>
 
         <main>
-            <form action="" method="POST" id="login-form">
+            <form action="/login" method="POST" id="login-form">
                 <div class="container">
                     <div class="row justify-content-center" style="margin-top: 100px;">
                         <div class="col-md-5">

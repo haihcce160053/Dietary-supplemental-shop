@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package com.controller;
 
 import java.io.IOException;
@@ -13,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ASUS
+ * @author huynh
  */
 public class HomeController extends HttpServlet {
 
@@ -55,7 +51,7 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("/home.jsp").forward(request, response);
     }
 
     /**

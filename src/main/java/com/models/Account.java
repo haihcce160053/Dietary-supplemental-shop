@@ -2,7 +2,7 @@ package com.models;
 
 /**
  *
- * @author huynh chi hai
+ * @author Huynh Chi Hai
  */
 public class Account {
     private String Username;

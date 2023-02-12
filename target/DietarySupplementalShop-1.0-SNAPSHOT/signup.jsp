@@ -1,7 +1,7 @@
 <%-- 
     Document   : signup
     Created on : Feb 12, 2023, 9:14:07 AM
-    Author     : huynh chi hai
+    Author     : Huynh Chi Hai
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,7 +11,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>FIVESTORE - Dietary supplemental shop</title>
+        <title>FIVESTORE - Sign Up</title>
         <link rel="icon" type="image/x-icon" href="HCDATAFILE/img/logo-only.png">
         <!-- Font Awesome -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
