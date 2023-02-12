@@ -253,12 +253,12 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="radio-group">
-                                        <input type="radio" name="gender" id="gender" style="margin-left: 30px" checked>
-                                        <label for="male">Male</label>
+                                        <input type="radio" name="gender" id="genderMale" style="margin-left: 30px" checked>
+                                        <label for="genderMale">Male</label>
                                     </div>
                                     <div class="radio-group">
-                                        <input type="radio" name="gender" id="gender" style="margin-left: 30px">
-                                        <label for="female">Female</label>
+                                        <input type="radio" name="gender" id="genderFemale" style="margin-left: 30px">
+                                        <label for="genderFemale">Female</label>
                                     </div>
                                 </div>
                                 <!-- Input username -->
