@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 D:\Code\GITHUB\Dietary-supplemental-shop\src\main\java\com\db\DBConnection.java
 D:\Code\GITHUB\Dietary-supplemental-shop\src\main\java\com\daos\AccountDAO.java
 D:\Code\GITHUB\Dietary-supplemental-shop\src\main\java\com\models\Oder.java
@@ -9,3 +10,13 @@ D:\Code\GITHUB\Dietary-supplemental-shop\src\main\java\com\security\Encoding.jav
 D:\Code\GITHUB\Dietary-supplemental-shop\src\main\java\com\controller\Constants.java
 D:\Code\GITHUB\Dietary-supplemental-shop\src\main\java\com\models\Account.java
 D:\Code\GITHUB\Dietary-supplemental-shop\src\main\java\com\models\UserGoogle.java
+=======
+D:\Github\Dietary-supplemental-shop\src\main\java\com\daos\AccountDAO.java
+D:\Github\Dietary-supplemental-shop\src\main\java\com\controller\HomeController.java
+D:\Github\Dietary-supplemental-shop\src\main\java\com\models\Oder.java
+D:\Github\Dietary-supplemental-shop\src\main\java\com\models\Product.java
+D:\Github\Dietary-supplemental-shop\src\main\java\com\models\Account.java
+D:\Github\Dietary-supplemental-shop\src\main\java\com\security\Encoding.java
+D:\Github\Dietary-supplemental-shop\src\main\java\com\db\DBConnection.java
+D:\Github\Dietary-supplemental-shop\src\main\java\com\controller\AccountController.java
+>>>>>>> a9707964e818dc69890b0b859ae081d9002a5c41
