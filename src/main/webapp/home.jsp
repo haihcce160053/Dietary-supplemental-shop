@@ -12,10 +12,7 @@
         <title>FIVESTORE - Dietary supplemental shop</title>
     </head>
     <body>
-<<<<<<< HEAD
         <a href="/login">login</a>
-=======
         <h1>Thấy trang này là login thành công!</h1>
->>>>>>> a9707964e818dc69890b0b859ae081d9002a5c41
     </body>
 </html>

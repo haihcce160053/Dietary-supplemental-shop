@@ -204,74 +204,6 @@
             </nav>
         </div>
     </header>
-
-<<<<<<< HEAD
-        <main>
-            <form action="/login" method="POST" id="login-form">
-                <div class="container">
-                    <div class="row justify-content-center" style="margin-top: 100px;">
-                        <div class="col-md-5">
-                            <img src="<%= getServletContext().getContextPath()%> /img/signupqc/signup.png" alt=""
-                                 style="box-shadow: 10px 10px 10px rgba(223, 60, 212, 0.271);">
-                        </div>
-                        <div class="col-md-7 col-lg-5">
-                            <div class="login-wrap p-4 p-md-5">
-                                <div class="icon d-flex align-items-center justify-content-center">
-                                    <span class="fa fa-user-o"></span>
-                                </div>
-                                <!-- Title login -->
-                                <div class="form-group">
-                                    <h3 class="text-left mb-1" style="color: #9c27b0;">Login</h3>
-                                    <span class="text-left" style="font-size: 15px; color: dimgray">
-                                        Welcome to the dietary supplemental shop</span>
-                                    <hr>
-                                </div>
-                                <!-- Input username -->
-                                <div class="form-group">
-                                    <label for="" style="margin-bottom: 5px;">Username&nbsp;</label><label for=""
-                                                                                                           style="color: red;">*</label>
-                                    <input type="text" name="username" id="username" class="form-control rounded-left"
-                                           placeholder="Input username">
-                                </div>
-                                <!-- Input password -->
-                                <div class="form-group" style="margin-top: 20px;">
-                                    <label for="" style="margin-bottom: 5px;">Password&nbsp;</label><label for=""
-                                                                                                           style="color: red;">*</label>
-                                    <input type="password" name="password" id="password" class="form-control rounded-left"
-                                           placeholder="Input password">
-                                </div>
-                                <!-- Submit login -->
-                                <div class="form-group" style="margin-top: 25px;">
-                                    <button type="submit" id="btnLogin" name="btnLogin"
-                                            class="form-control btn btn-primary rounded submit px-3"
-                                            style="background-color: #9c27b0;" onclick="return login()">Login</button>
-                                </div>
-                                <div class="form-group" style="margin-top: 10px;">
-                                    <span id="loginError" style="color:red"></span>
-                                </div>
-                                <!-- Forgot password -->
-                                <div class="form-group" style="margin-top: 20px;" align="center">
-                                    <a href="">Forgot password?</a>
-                                </div>
-                                <!-- Sign in other way -->
-                                <div class="orther-login" align="center" style="margin-top: 20px;">
-                                    <div class="login-orther-line"></div>
-                                    <span class="login-orther-text" style="color: gray;">Sign in another way</span>
-                                    <div class="login-orther-line"></div>
-                                </div>
-                                <!-- Sign in with google -->
-                                <div class="orther-login" align="center">
-                                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/login/google&response_type=code
-		   &client_id=931742517382-quh16iu9mem5r4gbo5r1kk1uos757t11.apps.googleusercontent.com&approval_prompt=force">                                    
-                                        <button class="google-login" type="button">
-                                            Login with Google
-                                        </button></a>
-                                </div>
-                                <div class="form-group" style="margin-top: 20px;" align="center">
-                                    Do not have an account? <a href="signup.jsp">Register here</a>
-                                </div>
-=======
-    <main>
         <form action="" method="POST" id="login-form">
             <div class="container">
                 <div class="row justify-content-center" style="">
@@ -325,14 +257,15 @@
                                 <div class="login-orther-line"></div>
                             </div>
                             <!-- Sign in with google -->
-                            <div class="orther-login" align="center">
-                                <button class="google-login">
-                                    Login with Google
-                                </button>
-                            </div>
+                                <div class="orther-login" align="center">
+                                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/login/google&response_type=code
+		   &client_id=931742517382-quh16iu9mem5r4gbo5r1kk1uos757t11.apps.googleusercontent.com&approval_prompt=force">                                    
+                                        <button class="google-login" type="button">
+                                            Login with Google
+                                        </button></a>
+                                </div>
                             <div class="form-group" style="margin-top: 20px;" align="center">
                                 Do not have an account? <a href="signup.jsp">Register here</a>
->>>>>>> a9707964e818dc69890b0b859ae081d9002a5c41
                             </div>
                         </div>
                     </div>
