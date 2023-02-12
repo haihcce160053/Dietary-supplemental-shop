@@ -8,6 +8,10 @@
         <servlet-name>HomeController</servlet-name>
         <servlet-class>com.controller.HomeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GoogleHandle</servlet-name>
+        <servlet-class>com.controller.GoogleHandle</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AccountController</servlet-name>
         <url-pattern>/AccountController</url-pattern>
@@ -19,6 +23,10 @@
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GoogleHandle</servlet-name>
+        <url-pattern>/login/google</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
