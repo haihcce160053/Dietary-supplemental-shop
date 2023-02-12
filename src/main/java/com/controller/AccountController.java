@@ -57,7 +57,9 @@ public class AccountController extends HttpServlet {
         String path = request.getRequestURI();
         if (path.endsWith("/login")) {
             request.getRequestDispatcher("/login.jsp").forward(request, response);
-            //response.sendRedirect("login.jsp");
+        }
+        if (path.endsWith("/register")) {
+            request.getRequestDispatcher("/signup.jsp").forward(request, response);
         }
     }
 
@@ -83,11 +85,10 @@ public class AccountController extends HttpServlet {
                 Account acc = new Account();
                 acc = dao.checkAccount(Username, Password); //Save object
                 if (acc != null) {
-
                     //Switch page if login success
-                    response.sendRedirect(request.getContextPath() + "/home");
+                    response.sendRedirect(request.getContextPath() + "/");
                 } else {
-                    response.sendRedirect(request.getContextPath() + "/login");
+                    response.sendRedirect(request.getContextPath() + "/register");
                 }
             }
         } catch (Exception e) {

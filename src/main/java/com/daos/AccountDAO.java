@@ -23,7 +23,7 @@ public class AccountDAO {
 
     public Account checkAccount(String Username, String Password) {
         try {
-            String query = "select * from account where username=? and password=?";
+            String query = "select * from Account INNER JOIN AccountInformation ON Account.Username = AccountInformation.Username where Account.Username=? and Account.Password=?";
             PreparedStatement pst = conn.prepareStatement(query);
             pst.setString(1, Username);
             pst.setString(2, Password);
@@ -32,7 +32,7 @@ public class AccountDAO {
             while (rs.next()) {
                 String db_user = rs.getString("Username");
                 String db_pwd = rs.getString("Password");
-                String db_SecurityAnswer = rs.getString("SecurityAnswer");
+                String db_SecurityAnswer = rs.getString("SercurityAnswer");
                 String db_Fullname = rs.getString("Fullname");
                 String db_PhoneNumber = rs.getString("PhoneNumber");
                 String db_Gender = rs.getString("Gender");

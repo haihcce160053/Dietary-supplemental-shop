@@ -12,7 +12,6 @@
         <title>FIVESTORE - Dietary supplemental shop</title>
     </head>
     <body>
-        <h1>This is home page</h1>
-        <h1>Toi la Home</h1>
+        <h1>Thấy trang này là login thành công!</h1>
     </body>
 </html>
