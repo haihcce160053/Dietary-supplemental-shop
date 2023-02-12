@@ -1,7 +1,7 @@
 <%-- 
     Document   : signup
     Created on : Feb 12, 2023, 9:14:07 AM
-    Author     : Huynh Chi Hai
+    Author     : huynh chi hai
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,7 +11,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>FIVESTORE - Sign Up</title>
+        <title>FIVESTORE - Dietary supplemental shop</title>
         <link rel="icon" type="image/x-icon" href="HCDATAFILE/img/logo-only.png">
         <!-- Font Awesome -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
@@ -25,35 +25,172 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 
         <style>
-            .google-login {
-                background-color: #dd4b39;
-                color: #fff;
-                border-radius: 5px;
-                padding: 5px 20px;
-                font-size: 15px;
-                cursor: pointer;
+            form {
+                background-color: #f2f2f2;
+                border-radius: 10px;
             }
 
-            .google-login i {
-                margin-right: 10px;
-            }
-
-            .orther-login {
+            .icon {
+                background-color: #9c27b0;
+                border-radius: 50%;
+                width: 70px;
+                height: 70px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                margin: 0 auto;
+            }
+
+            .icon span {
+                color: white;
+                font-size: 40px;
+            }
+
+            h3 {
+                margin-bottom: 30px;
+            }
+
+            label {
+                font-weight: bold;
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                border: none;
+                border-radius: 25px;
+                padding: 10px;
+                margin-bottom: 20px;
+                width: 100%;
+                box-sizing: border-box;
+                font-size: 16px;
+                background-color: #fff;
+            }
+
+            input[type="text"]:focus,
+            input[type="password"]:focus {
+                outline: none;
+            }
+
+            .radio-group {
+                display: inline-block;
+                margin-left: 30px;
+                cursor: pointer;
+            }
+
+            .radio-group input[type="radio"] {
+
+            }
+
+            .radio-group label {
+                padding-left: 20px;
+                background-position: 0 0;
+                background-repeat: no-repeat;
+            }
+
+            .radio-group input[type="radio"]:checked + label {
+                background-position: 0 -20px;
+            }
+
+            .submit {
+                background-color: #9c27b0;
+                color: white;
+                font-weight: bold;
+                border-radius: 25px;
+                padding: 10px 20px;
                 margin-top: 20px;
+                width: 100%;
+                box-sizing: border-box;
+                font-size: 16px;
             }
 
-            .login-orther-line {
-                width: 50px;
+            .submit:hover {
+                background-color: #7b1fa2;
+            }
+
+            .orther-login {
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .orther-login .login-orther-line {
                 height: 1px;
-                background-color: #ccc;
-                margin: 0 10px;
+                width: 100px;
+                background-color: gray;
+                margin: 0 20px;
             }
 
-            .login-orther-text {
-                color: #333;
+            .orther-login .login-orther-text {
+                font-size: 14px;
+                color: gray;
+                margin: 0 20px;
+            }
+
+            .google-login {
+                background-color: #db4437;
+                color: white;
+                font-weight: bold;
+                border-radius: 25px;
+                padding: 10px 20px;
+                margin-top: 20px;
+                width: 100%;
+                box-sizing: border-box;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+            .google-login:hover {
+                background-color: #c62828;
+            }
+            /* Tablet styles */
+            @media (max-width: 991px) {
+                .container {
+                    padding: 0 20px;
+                }
+
+                .col-md-5, .col-md-7 {
+                    flex: 0 0 100%;
+                    max-width: 100%;
+                }
+
+                .col-lg-5 {
+                    display: none;
+                }
+
+                .login-wrap {
+                    padding: 20px;
+                }
+            }
+
+            /* Mobile styles */
+            @media (max-width: 767px) {
+                .container {
+                    padding: 0 10px;
+                }
+
+                .icon {
+                    font-size: 30px;
+                }
+                h3 {
+                    font-size: 20px;
+                }
+
+                .form-group label {
+                    font-size: 14px;
+                }
+
+                input[type="text"], input[type="password"] {
+                    font-size: 14px;
+                }
+
+                button[type="submit"] {
+                    font-size: 14px;
+                }
+
+                a {
+                    font-size: 14px;
+                }
             }
         </style>
     </head>
@@ -88,16 +225,13 @@
         <main>
             <form action="" method="POST" id="login-form">
                 <div class="container">
-                    <div class="row justify-content-center" style="margin-top: 80px;">
+                    <div class="row justify-content-center">
                         <div class="col-md-5">
-                            <img src="img/signupqc/signup.png" alt=""
-                                 style="box-shadow: 10px 10px 10px rgba(223, 60, 212, 0.271);">
+                            <img src="img/signupqc/signup.png" alt="" class="image"
+                                 style="box-shadow: 10px 10px 10px rgba(223, 60, 212, 0.271);margin-top: 80px;">
                         </div>
                         <div class="col-md-7 col-lg-5">
                             <div class="login-wrap p-4 p-md-5">
-                                <div class="icon d-flex align-items-center justify-content-center">
-                                    <span class="fa fa-user-o"></span>
-                                </div>
                                 <!-- Title login -->
                                 <div class="form-group">
                                     <h3 class="text-left mb-1" style="color: #9c27b0;">Register</h3>
@@ -114,10 +248,18 @@
                                 </div>
                                 <!-- Choose gender -->
                                 <div class="form-group">
-                                    <label for="" style="margin-top: 20px;">Gender&nbsp;</label><label for=""
-                                                                                                       style="color: red;">*</label>
-                                    <input type="radio" name="gender" id="male" style="margin-left: 30px" checked> Male
-                                    <input type="radio" name="gender" id="female" style="margin-left: 30px"> Female
+                                    <label for="" style="margin-top: 20px;">Gender&nbsp;</label><label for="" style="color: red;">*</label>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="radio-group">
+                                        <input type="radio" name="gender" id="gender" style="margin-left: 30px" checked>
+                                        <label for="male">Male</label>
+                                    </div>
+                                    <div class="radio-group">
+                                        <input type="radio" name="gender" id="gender" style="margin-left: 30px">
+                                        <label for="female">Female</label>
+                                    </div>
                                 </div>
                                 <!-- Input username -->
                                 <div class="form-group">
@@ -125,14 +267,7 @@
                                                                                                          style="color: red;">*</label>
                                     <input type="text" name="username" id="username" class="form-control rounded-left"
                                            placeholder="Ex: abc123">
-                                </div>                               
-                                <!-- Input email -->
-                                <div class="form-group">
-                                    <label for="" style="margin-top: 20px;">Email&nbsp;</label><label for=""
-                                                                                                      style="color: red;">*</label>
-                                    <input type="text" name="email" id="email" class="form-control rounded-left"
-                                           placeholder="example@gmail.com">
-                                </div>                                                             
+                                </div> 
                                 <!-- Input password -->
                                 <div class="form-group" style="margin-top: 20px;">
                                     <label for="" style="margin-bottom: 5px;">Password&nbsp;</label><label for=""
@@ -140,15 +275,37 @@
                                     <input type="password" name="password" id="password" class="form-control rounded-left"
                                            placeholder="Between 5 and 30 characters">
                                 </div>
+                                <!-- Confirm password -->
+                                <div class="form-group" style="margin-top: 20px;">
+                                    <label for="" style="margin-bottom: 5px;">Confirm Password&nbsp;</label><label for=""
+                                                                                                                   style="color: red;">*</label>
+                                    <input type="password" name="confirmPassword" id="confirmPassword" class="form-control rounded-left"
+                                           placeholder="Please enter again password!">
+                                </div>
                                 <!-- Input security question -->
                                 <div class="form-group">
                                     <label for="" style="margin-top: 20px;">Security&nbsp;</label><label for=""
                                                                                                          style="color: red;">*</label>
                                     <input type="text" name="securityques" id="securityques" class="form-control rounded-left"
-                                           placeholder="Security question" style="margin-bottom: 10px">
-                                    <input type="text" name="securityans" id="securityques" class="form-control rounded-left"
+                                           value="What's Your Primary School's Name?" style="margin-bottom: 10px" readonly>
+                                    <input type="text" name="securityAnswer" id="securityAnswer" class="form-control rounded-left"
                                            placeholder="Security answer">
                                 </div>    
+                                <!-- Input Phone Number -->
+                                <div class="form-group">
+                                    <label for="" style="margin-top: 20px;">Phone Number&nbsp;</label><label for=""
+                                                                                                             style="color: red;">*</label>
+                                    <input type="text" name="phoneNumber" id="phoneNumber" class="form-control rounded-left"
+                                           placeholder="Please enter your phone number!">
+                                </div>
+                                <!-- Input email -->
+                                <div class="form-group">
+                                    <label for="" style="margin-top: 20px;">Email&nbsp;</label><label for=""
+                                                                                                      style="color: red;">*</label>
+                                    <input type="text" name="email" id="email" class="form-control rounded-left"
+                                           placeholder="example@gmail.com">
+                                </div>                                                             
+
                                 <!-- Submit login -->
                                 <div class="form-group" style="margin-top: 25px;">
                                     <button type="submit" id="btnLogin" name="btnLogin"
@@ -187,7 +344,10 @@
                 var email = document.getElementById("email").value;
                 var username = document.getElementById("username").value;
                 var password = document.getElementById("password").value;
-                if (fullname != "" && username != "" && password != "" && email != "") {
+                var confirmPassword = document.getElementById("confirmPassword").value;
+                var phone = document.getElementById("phoneNumber").value;
+                var answer = document.getElementById("securityAnswer").value;
+                if (fullname != "" && username != "" && password != "" && confirmPassword != "" && email != "" && phone != "" && answer != "") {
                     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                     if (re.test(String(email).toLowerCase()) == true) {
                         if (username.length >= 5 && username.length <= 30) {
@@ -200,7 +360,40 @@
                                     var upperCase = /[A-Z]/g;
                                     var numbers = /[0-9]/g;
                                     if (lowerCase.test(password) && upperCase.test(password) && numbers.test(password)) {
-                                        // Your code to process a successful login
+                                        if (confirmPassword.length >= 5 && confirmPassword.length <= 30) {
+                                            var lowerCase = /[a-z]/g;
+                                            var upperCase = /[A-Z]/g;
+                                            var numbers = /[0-9]/g;
+                                            if (lowerCase.test(confirmPassword) && upperCase.test(confirmPassword) && numbers.test(confirmPassword)) {
+                                                if (confirmPassword == password) {
+                                                    var phoneRegex = /^\d{10}$|^\d{3}-\d{3}-\d{4}$|^\d{3} \d{3} \d{4}$/;
+                                                    if (phoneRegex.test(phone) == true) {
+                                                        if (answer.length >= 5 && answer.length <= 30) {
+
+                                                        } else {
+                                                            document.getElementById("regError").innerText =
+                                                                    "Answer must be between 5 and 30 characters!";
+                                                            return false;
+                                                        }
+                                                    } else {
+                                                        document.getElementById("regError").innerText =
+                                                                "Phone number is not valid!";
+                                                        return false;
+                                                    }
+                                                } else {
+                                                    document.getElementById("regError").innerText =
+                                                            "Confirm Password not the same with Password!";
+                                                    return false;
+                                                }
+                                            } else {
+                                                document.getElementById("regError").innerText =
+                                                        "Confirm Password must include at least one lowercase letter, one uppercase letter, and one number!";
+                                                return false;
+                                            }
+                                        } else {
+                                            document.getElementById("regError").innerText = "Confirm Password must be between 5 and 30 characters!";
+                                            return false;
+                                        }
                                     } else {
                                         document.getElementById("regError").innerText =
                                                 "Password must include at least one lowercase letter, one uppercase letter, and one number!";
@@ -223,7 +416,7 @@
                         return false;
                     }
                 } else {
-                    document.getElementById("regError").innerText = "Please fill in your full name, email, username and password!";
+                    document.getElementById("regError").innerText = "Please fill all information account to register!";
                     return false;
                 }
             }
