@@ -91,7 +91,7 @@
                 <div class="container">
                     <div class="row justify-content-center" style="margin-top: 100px;">
                         <div class="col-md-5">
-                            <img src="img/signupqc/signup.png" alt=""
+                            <img src="<%= getServletContext().getContextPath()%> /img/signupqc/signup.png" alt=""
                                  style="box-shadow: 10px 10px 10px rgba(223, 60, 212, 0.271);">
                         </div>
                         <div class="col-md-7 col-lg-5">

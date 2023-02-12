@@ -5,10 +5,10 @@ import com.models.Account;
 import com.security.Encoding;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
@@ -54,12 +54,10 @@ public class AccountController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("HELO");
-        response.setContentType("text/html;charset=UTF-8");
         String path = request.getRequestURI();
         if (path.endsWith("/login")) {
-            
             request.getRequestDispatcher("/login.jsp").forward(request, response);
+            //response.sendRedirect("login.jsp");
         }
     }
 
@@ -74,7 +72,6 @@ public class AccountController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         try {
             if (request.getParameter("btnLogin") != null) {
                 Encoding endcode = new Encoding();
