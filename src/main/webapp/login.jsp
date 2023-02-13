@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : Feb 12, 2023, 9:09:40 AM
-    Author     : huynh chi hai
+    Author     : Huynh Chi Hai
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -208,6 +208,11 @@
             </div>
         </header>
         <form action="/Login" method="post" id="login-form">
+                </div>
+            </nav>
+        </div>
+    </header>
+        <form action="/login" method="POST" id="login-form">
             <div class="container">
                 <div class="row justify-content-center" style="">
                     <div class="col-md-5">
@@ -279,6 +284,13 @@
                                         Login with Google
                                     </button></a>
                             </div>
+                                <div class="orther-login" align="center">
+                                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/Login/Google&response_type=code
+		   &client_id=931742517382-quh16iu9mem5r4gbo5r1kk1uos757t11.apps.googleusercontent.com&approval_prompt=force">                                    
+                                        <button class="google-login" type="button">
+                                            Login with Google
+                                        </button></a>
+                                </div>
                             <div class="form-group" style="margin-top: 20px;" align="center">
                                 Do not have an account? <a href="signup.jsp">Register here</a>
                             </div>

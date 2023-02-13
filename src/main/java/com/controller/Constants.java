@@ -13,7 +13,7 @@ public class Constants {
 
 	public static String GOOGLE_CLIENT_SECRET = "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";
 
-	public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/login/google";
+	public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/Login/Google";
 
 	public static String GOOGLE_LINK_GET_TOKEN = "https://accounts.google.com/o/oauth2/token";
 
