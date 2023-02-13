@@ -4,6 +4,9 @@
  */
 package com.controller;
 
+import com.daos.AccountDAO;
+import com.models.Account;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.Cookie;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -88,7 +91,69 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       if (request.getParameter("btnSignUp") != null) {
+            AccountDAO dao = new AccountDAO();
+            String username = request.getParameter("username");
+            Account ac = dao.getAccount(username);
+            if (ac != null) {
+                String password = request.getParameter("password");
+                String securityanswer = request.getParameter("SecurityAnswer");
+                String fullname = request.getParameter("fullName");
+                String phonenumber = request.getParameter("phoneNumber");
+                String gender = request.getParameter("gender");
+                String email = request.getParameter("email");
+                String accounttypeid = "CUS";
+                Account st = new Account(username, password , securityanswer, fullname, phonenumber, gender, email, accounttypeid);
+                int count = dao.addNew(st);
+                if (count > 0) {
+                    request.setAttribute("mess", "Sign Up Successfully! You can sign in now!");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+                    dispatcher.forward(request, response);
+
+                } else {
+                    request.setAttribute("mess", "Sign Up Failed! Please Sign Up again!");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("signup.jsp");
+                    dispatcher.forward(request, response);
+                }
+            } else {
+                request.setAttribute("mess", "Username already exists!");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("signup.jsp");
+                dispatcher.forward(request, response);
+            }
+
+        }
+        if (request.getParameter("btnSignIn") != null) {
+            AccountDAO dao = new AccountDAO();
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+
+            Account ac = dao.getAccount(username);
+            if (ac != null) {
+                if (password.equals(ac.getPassword())) {
+                    Cookie accLogin = new Cookie("username", username);
+                    accLogin.setMaxAge(60 * 60 * 72);
+                    response.addCookie(accLogin);
+                    String type = ac.getAccountTypeId();
+                    if (type.equals("AD")) {
+                        request.setAttribute("username", username);
+                        request.getRequestDispatcher("homeAdmin.jsp").forward(request, response);
+                    } else {
+                        request.setAttribute("username", username);
+                        request.getRequestDispatcher("home.jsp").forward(request, response);
+                    }
+
+                } else {
+                    request.setAttribute("mess", "Username or Password is not correct! Please check again!");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+                    dispatcher.forward(request, response);
+                }
+            } else {
+                request.setAttribute("mess", "Username is not exist!");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+                dispatcher.forward(request, response);
+            }
+
+        }
     }
 
     /**

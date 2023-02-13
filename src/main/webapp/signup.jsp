@@ -196,6 +196,9 @@
     </head>
 
     <body>
+        <%
+            String mess = (String) request.getAttribute("mess");
+        %>
         <header id="page-header">
             <div class="page-container">
                 <nav class="navbar navbar-expand-lg" style="background-color: #9c27b0;">
@@ -308,13 +311,26 @@
 
                                 <!-- Submit login -->
                                 <div class="form-group" style="margin-top: 25px;">
-                                    <button type="submit" id="btnLogin" name="btnLogin"
+                                    <button type="submit" id="btnSignUp" name="btnSignUp"
                                             class="form-control btn btn-primary rounded submit px-3"
                                             style="background-color: #9c27b0;" onclick="return register()">Register</button>
                                 </div>
+                                <%
+                                    if (mess != null) {
+                                %>
+                                 <div class="form-group" style="margin-top: 10px;">
+                                    <span id="regError" style="color:red"><%= mess%></span>
+                                </div>
+                                <%
+                                } else {
+                                %>
                                 <div class="form-group" style="margin-top: 10px;">
                                     <span id="regError" style="color:red"></span>
                                 </div>
+                                <%
+                                    }
+                                %>
+                               
                                 <!-- Sign in other way -->
                                 <div class="orther-login" align="center" style="margin-top: 20px;">
                                     <div class="login-orther-line"></div>

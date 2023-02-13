@@ -13,10 +13,9 @@
         <servlet-class>com.controller.GoogleHandle</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>loginController</servlet-name>
+        <servlet-name>LoginController</servlet-name>
         <servlet-class>com.controller.LoginController</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/</url-pattern>
@@ -26,7 +25,7 @@
         <url-pattern>/Account/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>loginController</servlet-name>
+        <servlet-name>LoginController</servlet-name>
         <url-pattern>/Login/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>

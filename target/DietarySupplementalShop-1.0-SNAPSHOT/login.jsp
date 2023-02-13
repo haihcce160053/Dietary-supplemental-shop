@@ -176,35 +176,38 @@
                 }
             }
         </style>
-</head>
+    </head>
 
-<body>
-    <header id="page-header">
-        <div class="page-container">
-            <nav class="navbar navbar-expand-lg" style="background-color: #9c27b0;">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="home.jsp"
-                       style="color: white; font-size: 25px;"><b>FIVESTORE.VN</b></a>
-                    <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
-                            data-mdb-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarText">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link" href="home.jsp" aria-current="page" style="color: white;">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="product.jsp" style="color: white;">Product</a>
-                            </li>
-                        </ul>
+    <body>
+        <%
+            String mess = (String) request.getAttribute("mess");
+        %>
+        <header id="page-header">
+            <div class="page-container">
+                <nav class="navbar navbar-expand-lg" style="background-color: #9c27b0;">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="home.jsp"
+                           style="color: white; font-size: 25px;"><b>FIVESTORE.VN</b></a>
+                        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+                                data-mdb-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarText">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="home.jsp" aria-current="page" style="color: white;">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="product.jsp" style="color: white;">Product</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </nav>
-        </div>
-    </header>
-        <form action="" method="POST" id="login-form">
+                </nav>
+            </div>
+        </header>
+        <form action="LoginController" method="POST" id="login-form">
             <div class="container">
                 <div class="row justify-content-center" style="">
                     <div class="col-md-5">
@@ -239,13 +242,25 @@
                             </div>
                             <!-- Submit login -->
                             <div class="form-group" style="margin-top: 25px;">
-                                <button type="submit" id="btnLogin" name="btnLogin"
+                                <button type="submit" id="btnSignIn" name="btnSignIn"
                                         class="form-control btn btn-primary rounded submit px-3"
                                         style="background-color: #9c27b0;" onclick="return login()">Login</button>
                             </div>
+                            <%
+                                if (mess != null) {
+                            %>
                             <div class="form-group" style="margin-top: 10px;">
-                                <span id="loginError" style="color:red"></span>
+                                <span id="regError" style="color:red"><%= mess%></span>
                             </div>
+                            <%
+                            } else {
+                            %>
+                            <div class="form-group" style="margin-top: 10px;">
+                                <span id="regError" style="color:red"></span>
+                            </div>
+                            <%
+                                }
+                            %>
                             <!-- Forgot password -->
                             <div class="form-group" style="margin-top: 20px;" align="center">
                                 <a href="">Forgot password?</a>
@@ -257,13 +272,13 @@
                                 <div class="login-orther-line"></div>
                             </div>
                             <!-- Sign in with google -->
-                                <div class="orther-login" align="center">
-                                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/login/google&response_type=code
-		   &client_id=931742517382-quh16iu9mem5r4gbo5r1kk1uos757t11.apps.googleusercontent.com&approval_prompt=force">                                    
-                                        <button class="google-login" type="button">
-                                            Login with Google
-                                        </button></a>
-                                </div>
+                            <div class="orther-login" align="center">
+                                <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/login/google&response_type=code
+                                   &client_id=931742517382-quh16iu9mem5r4gbo5r1kk1uos757t11.apps.googleusercontent.com&approval_prompt=force">                                    
+                                    <button class="google-login" type="button">
+                                        Login with Google
+                                    </button></a>
+                            </div>
                             <div class="form-group" style="margin-top: 20px;" align="center">
                                 Do not have an account? <a href="signup.jsp">Register here</a>
                             </div>

@@ -51,4 +51,30 @@ public class AccountDAO {
         }
         return null;
     }
+        /**
+     *
+     * @param ac
+     * @return
+     */
+    public int addNew(Account ac) {
+        int count = 0;
+        try {
+            PreparedStatement pst = conn.prepareStatement("Insert into Account values(?,?,?)");
+            pst.setString(1, ac.getUsername());
+            pst.setString(2, ac.getPassword());
+            pst.setString(3, ac.getSecurityAnswer());
+            count = pst.executeUpdate();
+            PreparedStatement pt = conn.prepareStatement("Insert into AccountInformation values(?,?,?,?,?,?)");
+            pst.setString(1, ac.getUsername());
+            pst.setString(2, ac.getAccountTypeId());
+            pst.setString(3, ac.getFullname());
+            pst.setInt(4, Integer.parseInt(ac.getPassword()));
+            pst.setString(5, ac.getGender());
+            pst.setString(6, ac.getEmail());
+            count = pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return count;
+    }
 }
