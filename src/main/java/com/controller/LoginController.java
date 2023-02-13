@@ -6,6 +6,7 @@ package com.controller;
 
 import com.daos.AccountDAO;
 import com.models.Account;
+import com.security.Encoding;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.Cookie;
 import java.io.IOException;
@@ -60,7 +61,7 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String path = request.getRequestURI();
-        if (path.endsWith("/Login")) {
+        if (path.endsWith("/login")) {
             Cookie cookie = null;
             Cookie[] cookies = null;
             cookies = request.getCookies();
@@ -74,7 +75,7 @@ public class LoginController extends HttpServlet {
             }
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
-            if (path.endsWith("/Login/NewAccount")) {
+            if (path.endsWith("/login/NewAccount")) {
                 request.getRequestDispatcher("signup.jsp").forward(request, response);
             }
         }
@@ -128,7 +129,9 @@ public class LoginController extends HttpServlet {
 
             Account ac = dao.getAccount(username);
             if (ac != null) {
-                if (password.equals(ac.getPassword())) {
+                Encoding endcode = new Encoding();
+                
+                if (endcode.getMd5(password).equals(ac.getPassword())) {
                     Cookie accLogin = new Cookie("username", username);
                     accLogin.setMaxAge(60 * 60 * 72);
                     response.addCookie(accLogin);
@@ -140,9 +143,8 @@ public class LoginController extends HttpServlet {
                         request.setAttribute("username", username);
                         request.getRequestDispatcher("home.jsp").forward(request, response);
                     }
-
                 } else {
-                    request.setAttribute("mess", "Username or Password is not correct! Please check again!");
+                    request.setAttribute("mess", "Username or password is not correct!");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
                     dispatcher.forward(request, response);
                 }
