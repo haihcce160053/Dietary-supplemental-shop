@@ -1,8 +1,11 @@
 package com.controller;
 
+import com.daos.AccountDAO;
+import com.models.Account;
 import java.io.IOException;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,8 +28,42 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/home.jsp").forward(request, response);
-        //response.sendRedirect("home.jsp");
+        String username = "";
+        Cookie cookie = null;
+        Cookie[] cookies = null;
+        cookies = request.getCookies();
+        // Call method get Account
+        AccountDAO daoAcc = new AccountDAO();
+        Account ac;
+        // Check cookies
+        if (cookies != null) {
+            for (int i = 0; i < cookies.length; i++) {
+                cookie = cookies[i];
+                // Get cookie in list cookies
+                username = cookie.getValue();
+                // Get account from cookie
+                ac = daoAcc.getAccount(username);
+                // Check account 
+                if (ac != null) { // If it has in db
+                    String type = ac.getAccountTypeId();
+                    if (type.equals("AD")) { // If account is admin
+                        request.setAttribute("Account", ac);
+                        request.getRequestDispatcher("homeAdmin.jsp").forward(request, response);
+                        return;
+                    } else { //If account is customer
+                        request.setAttribute("Account", ac);
+                        request.getRequestDispatcher("home.jsp").forward(request, response);
+                        return;
+                    }
+                } else { // If it hasn't then redirect to home default
+                    request.getRequestDispatcher("home.jsp").forward(request, response);
+                    return;
+                }
+            }
+        } else {
+            request.getRequestDispatcher("home.jsp").forward(request, response);
+            return;
+        }
     }
 
     /**
@@ -40,7 +77,7 @@ public class HomeController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
     }
 
     /**

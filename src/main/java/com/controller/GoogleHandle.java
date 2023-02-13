@@ -75,7 +75,7 @@ public class GoogleHandle extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
                 		String code = request.getParameter("code");
-		String accessToken = getToken(code);
+		      String accessToken = getToken(code);
 		UserGoogle user = getUserInfo(accessToken);
 		System.out.println(user);
 //        request.getRequestDispatcher("/home.jsp").forward(request, response);

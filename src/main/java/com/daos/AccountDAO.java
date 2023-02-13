@@ -21,14 +21,18 @@ public class AccountDAO {
         conn = DBConnection.getConnection();
     }
 
-    public Account checkAccount(String Username, String Password) {
+    public Account getAccount(String Username) {
         try {
-            String query = "select * from Account INNER JOIN AccountInformation ON Account.Username = AccountInformation.Username where Account.Username=? and Account.Password=?";
+            String query = "select Account.Username, Account.Password, \n"
+                    + "Account.SercurityAnswer, AccountInformation.AccountTypeID,\n"
+                    + "AccountInformation.FullName,AccountInformation.Email, \n"
+                    + "AccountInformation.Gender, AccountInformation.PhoneNumber\n"
+                    + "from Account left outer join AccountInformation \n"
+                    + "on Account.Username = AccountInformation.Username\n"
+                    + "where Account.Username = ?";
             PreparedStatement pst = conn.prepareStatement(query);
             pst.setString(1, Username);
-            pst.setString(2, Password);
             ResultSet rs = pst.executeQuery();
-
             while (rs.next()) {
                 String db_user = rs.getString("Username");
                 String db_pwd = rs.getString("Password");
@@ -37,12 +41,11 @@ public class AccountDAO {
                 String db_PhoneNumber = rs.getString("PhoneNumber");
                 String db_Gender = rs.getString("Gender");
                 String db_Email = rs.getString("Email");
-
-                Account acc = new Account(db_user, db_pwd, db_SecurityAnswer, db_Fullname, db_PhoneNumber, db_Gender, db_Email);
-                if (db_user.equals(Username) && db_pwd.equals(Password)) {
-                    return acc;
-                }
+                String db_AccountTypeId = rs.getString("AccountTypeId");
+                Account acc = new Account(db_user, db_pwd, db_SecurityAnswer, db_Fullname, db_PhoneNumber, db_Gender, db_Email, db_AccountTypeId);
+                return acc;
             }
+             
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

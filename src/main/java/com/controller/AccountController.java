@@ -74,25 +74,25 @@ public class AccountController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            if (request.getParameter("btnLogin") != null) {
-                Encoding endcode = new Encoding();
-                String Username = request.getParameter("username"); //Get username in textbox
-                String Password = endcode.getMd5(request.getParameter("password")); //Get password in textbox
-                System.out.println(Password);
-
-                AccountDAO dao = new AccountDAO();
-                Account acc = new Account();
-                acc = dao.checkAccount(Username, Password); //Save object
-                if (acc != null) {
-                    //Switch page if login success
-                    response.sendRedirect(request.getContextPath() + "/");
-                } else {
-                    response.sendRedirect(request.getContextPath() + "/register");
-                }
-            }
-        } catch (Exception e) {
-        }
+//        try {
+//            if (request.getParameter("btnLogin") != null) {
+//                Encoding endcode = new Encoding();
+//                String Username = request.getParameter("username"); //Get username in textbox
+//                String Password = endcode.getMd5(request.getParameter("password")); //Get password in textbox
+//                System.out.println(Password);
+//
+//                AccountDAO dao = new AccountDAO();
+//                Account acc = new Account();
+//                acc = dao.checkAccount(Username, Password); //Save object
+//                if (acc != null) {
+//                    //Switch page if login success
+//                    response.sendRedirect(request.getContextPath() + "/");
+//                } else {
+//                    response.sendRedirect(request.getContextPath() + "/register");
+//                }
+//            }
+//        } catch (Exception e) {
+//        }
     }
 
     /**

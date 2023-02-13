@@ -208,7 +208,7 @@
             <div class="container">
                 <div class="row justify-content-center" style="">
                     <div class="col-md-5">
-                        <a href="signup.jsp">
+                        <a href="/Login/NewAccount">
                             <img src="img/signupqc/signup.png" alt=""
                                  style="box-shadow: 10px 10px 10px rgba(223, 60, 212, 0.271); margin-top: 100px;">
                         </a>
