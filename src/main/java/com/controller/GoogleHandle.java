@@ -17,7 +17,6 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.hc.client5.http.fluent.Request;
 import org.apache.hc.client5.http.fluent.Form;
 
-
 /**
  *
  * @author ASUS
@@ -39,29 +38,29 @@ public class GoogleHandle extends HttpServlet {
 
     }
 
-    	public static String getToken(String code) throws ClientProtocolException, IOException {
-		// call api to get token
-		String response = Request.post(Constants.GOOGLE_LINK_GET_TOKEN)
-				.bodyForm(Form.form().add("client_id", Constants.GOOGLE_CLIENT_ID)
-						.add("client_secret", Constants.GOOGLE_CLIENT_SECRET)
-						.add("redirect_uri", Constants.GOOGLE_REDIRECT_URI).add("code", code)
-						.add("grant_type", Constants.GOOGLE_GRANT_TYPE).build())
-				.execute().returnContent().asString();
+    public static String getToken(String code) throws ClientProtocolException, IOException {
+        // call api to get token
+        String response = Request.post(Constants.GOOGLE_LINK_GET_TOKEN)
+                .bodyForm(Form.form().add("client_id", Constants.GOOGLE_CLIENT_ID)
+                        .add("client_secret", Constants.GOOGLE_CLIENT_SECRET)
+                        .add("redirect_uri", Constants.GOOGLE_REDIRECT_URI).add("code", code)
+                        .add("grant_type", Constants.GOOGLE_GRANT_TYPE).build())
+                .execute().returnContent().asString();
 
-		JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
-		String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
-		return accessToken;
-	}
+        JsonObject jobj = new Gson().fromJson(response, JsonObject.class);
+        String accessToken = jobj.get("access_token").toString().replaceAll("\"", "");
+        return accessToken;
+    }
 
-	public static UserGoogle getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
-		String link = Constants.GOOGLE_LINK_GET_USER_INFO + accessToken;
-		String response = Request.get(link).execute().returnContent().asString();
+    public static UserGoogle getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
+        String link = Constants.GOOGLE_LINK_GET_USER_INFO + accessToken;
+        String response = Request.get(link).execute().returnContent().asString();
 
-		UserGoogle googlePojo = new Gson().fromJson(response, UserGoogle.class);
+        UserGoogle googlePojo = new Gson().fromJson(response, UserGoogle.class);
 
-		return googlePojo;
-	}
-    
+        return googlePojo;
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -74,18 +73,12 @@ public class GoogleHandle extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-<<<<<<< HEAD
-                		String code = request.getParameter("code");
-		      String accessToken = getToken(code);
-=======
-        //token google
-                String code = request.getParameter("code");
-		String accessToken = getToken(code);
->>>>>>> 6a8b4e9f3280775a9ec84de67498fd6858c0eb55
-		UserGoogle user = getUserInfo(accessToken);
-                //get user by token
-                
-		System.out.println(user);
+        String code = request.getParameter("code");
+        String accessToken = getToken(code);
+        UserGoogle user = getUserInfo(accessToken);
+        //get user by token
+
+        System.out.println(user);
 //        request.getRequestDispatcher("/home.jsp").forward(request, response);
     }
 
