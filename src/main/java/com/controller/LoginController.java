@@ -38,7 +38,7 @@ public class LoginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet loginController</title>");            
+            out.println("<title>Servlet loginController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet loginController at " + request.getContextPath() + "</h1>");
@@ -59,7 +59,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String path = request.getRequestURI();
+        String path = request.getRequestURI();
         if (path.endsWith("/Login")) {
             Cookie cookie = null;
             Cookie[] cookies = null;
@@ -67,15 +67,15 @@ public class LoginController extends HttpServlet {
             if (cookies != null) {
                 for (int i = 0; i < cookies.length; i++) {
                     cookie = cookies[i];
-                        // delete cookie
-                        cookie.setMaxAge(0);
-                        response.addCookie(cookie);
+                    // delete cookie
+                    cookie.setMaxAge(0);
+                    response.addCookie(cookie);
                 }
-            } 
-            request.getRequestDispatcher("/login.jsp").forward(request, response);
+            }
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             if (path.endsWith("/Login/NewAccount")) {
-                request.getRequestDispatcher("/signup.jsp").forward(request, response);
+                request.getRequestDispatcher("signup.jsp").forward(request, response);
             }
         }
     }
@@ -91,7 +91,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       if (request.getParameter("btnSignUp") != null) {
+        if (request.getParameter("btnSignUp") != null) {
             AccountDAO dao = new AccountDAO();
             String username = request.getParameter("username");
             Account ac = dao.getAccount(username);
@@ -103,7 +103,7 @@ public class LoginController extends HttpServlet {
                 String gender = request.getParameter("gender");
                 String email = request.getParameter("email");
                 String accounttypeid = "CUS";
-                Account st = new Account(username, password , securityanswer, fullname, phonenumber, gender, email, accounttypeid);
+                Account st = new Account(username, password, securityanswer, fullname, phonenumber, gender, email, accounttypeid);
                 int count = dao.addNew(st);
                 if (count > 0) {
                     request.setAttribute("mess", "Sign Up Successfully! You can sign in now!");
@@ -121,8 +121,7 @@ public class LoginController extends HttpServlet {
                 dispatcher.forward(request, response);
             }
 
-        }
-        if (request.getParameter("btnSignIn") != null) {
+        } else if (request.getParameter("btnSignIn") != null) {
             AccountDAO dao = new AccountDAO();
             String username = request.getParameter("username");
             String password = request.getParameter("password");
@@ -153,6 +152,8 @@ public class LoginController extends HttpServlet {
                 dispatcher.forward(request, response);
             }
 
+        }else {
+            request.getRequestDispatcher("home.jsp").forward(request, response);
         }
     }
 

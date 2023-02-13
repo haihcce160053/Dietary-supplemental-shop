@@ -207,7 +207,7 @@
                 </nav>
             </div>
         </header>
-        <form action="LoginController" method="POST" id="login-form">
+        <form action="/Login" method="post" id="login-form">
             <div class="container">
                 <div class="row justify-content-center" style="">
                     <div class="col-md-5">
