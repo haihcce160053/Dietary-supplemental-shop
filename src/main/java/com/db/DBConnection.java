@@ -17,7 +17,6 @@ public class DBConnection {
     private final String databaseName = "FIVESTORE";
     private final String user = "sa";
     private final String password = "Chihai4242";
-    //sadasdasdasdasdas sadasasda asdasdsadasdasdasasd
 
     //Connect to SQLServer
     public static Connection getConnection() {
