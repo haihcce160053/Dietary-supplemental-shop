@@ -47,6 +47,7 @@ public class AccountDAO {
     }
 
     /**
+     * Register for new user
      *
      * @param ac
      * @return
@@ -59,14 +60,23 @@ public class AccountDAO {
             pst.setString(2, ac.getPassword());
             pst.setString(3, ac.getSecurityAnswer());
             count = pst.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return count;
+    }
+
+    public int addNewInformation(Account ac) {
+        int count = 0;
+        try {
             PreparedStatement pt = conn.prepareStatement("Insert into AccountInformation values(?,?,?,?,?,?)");
-            pst.setString(1, ac.getUsername());
-            pst.setString(2, ac.getAccountTypeId());
-            pst.setString(3, ac.getFullname());
-            pst.setInt(4, Integer.parseInt(ac.getPassword()));
-            pst.setString(5, ac.getGender());
-            pst.setString(6, ac.getEmail());
-            count = pst.executeUpdate();
+            pt.setString(1, ac.getUsername());
+            pt.setString(2, ac.getAccountTypeId());
+            pt.setString(3, ac.getFullname());
+            pt.setString(4, ac.getPhoneNumber());
+            pt.setString(5, ac.getGender());
+            pt.setString(6, ac.getEmail());
+            count = pt.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

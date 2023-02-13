@@ -35,7 +35,7 @@ public class HomeController extends HttpServlet {
         // Call method get Account
         AccountDAO daoAcc = new AccountDAO();
         Account ac;
-        // Check cookies
+        // Check cookies exist
         if (cookies != null) {
             for (int i = 0; i < cookies.length; i++) {
                 cookie = cookies[i];
@@ -48,21 +48,17 @@ public class HomeController extends HttpServlet {
                     String type = ac.getAccountTypeId();
                     if (type.equals("AD")) { // If account is admin
                         request.setAttribute("Account", ac);
-                        request.getRequestDispatcher("homeAdmin.jsp").forward(request, response);
-                        return;
+                        request.getRequestDispatcher("/homeAdmin.jsp").forward(request, response);
                     } else { //If account is customer
                         request.setAttribute("Account", ac);
-                        request.getRequestDispatcher("home.jsp").forward(request, response);
-                        return;
+                        request.getRequestDispatcher("/home.jsp").forward(request, response);
                     }
                 } else { // If it hasn't then redirect to home default
-                    request.getRequestDispatcher("home.jsp").forward(request, response);
-                    return;
+                    request.getRequestDispatcher("/home.jsp").forward(request, response);
                 }
             }
         } else {
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-            return;
+            request.getRequestDispatcher("/home").forward(request, response);
         }
     }
 

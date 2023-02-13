@@ -284,7 +284,7 @@
                             </button></a>
                     </div>
                     <div class="form-group" style="margin-top: 20px;" align="center">
-                        Do not have an account? <a href="signup.jsp">Register here</a>
+                        Do not have an account? <a href="/signup">Register here</a>
                     </div>
                 </div>
             </div>

@@ -74,10 +74,8 @@ public class LoginController extends HttpServlet {
                 }
             }
             request.getRequestDispatcher("login.jsp").forward(request, response);
-        } else {
-            if (path.endsWith("/login/NewAccount")) {
-                request.getRequestDispatcher("signup.jsp").forward(request, response);
-            }
+        } else if (path.endsWith("/signup")) {
+            request.getRequestDispatcher("signup.jsp").forward(request, response);
         }
     }
 
@@ -96,32 +94,32 @@ public class LoginController extends HttpServlet {
             AccountDAO dao = new AccountDAO();
             String username = request.getParameter("username");
             Account ac = dao.getAccount(username);
-            if (ac != null) {
-                String password = request.getParameter("password");
-                String securityanswer = request.getParameter("SecurityAnswer");
-                String fullname = request.getParameter("fullName");
+            if (ac == null) {
+                Encoding endcode = new Encoding();
+                String password = endcode.getMd5(request.getParameter("password")); //Convert to MD5
+                String securityanswer = request.getParameter("securityAnswer");
+                String fullname = request.getParameter("fullname");
                 String phonenumber = request.getParameter("phoneNumber");
                 String gender = request.getParameter("gender");
                 String email = request.getParameter("email");
                 String accounttypeid = "CUS";
                 Account st = new Account(username, password, securityanswer, fullname, phonenumber, gender, email, accounttypeid);
                 int count = dao.addNew(st);
-                if (count > 0) {
+                int count2 = dao.addNewInformation(st);
+                if (count > 0 && count2 > 0) {
                     request.setAttribute("mess", "Sign Up Successfully! You can sign in now!");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
                     dispatcher.forward(request, response);
-
                 } else {
                     request.setAttribute("mess", "Sign Up Failed! Please Sign Up again!");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("signup.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/signup");
                     dispatcher.forward(request, response);
                 }
             } else {
                 request.setAttribute("mess", "Username already exists!");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("signup.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/signup");
                 dispatcher.forward(request, response);
             }
-
         } else if (request.getParameter("btnSignIn") != null) {
             AccountDAO dao = new AccountDAO();
             String username = request.getParameter("username");
@@ -138,24 +136,26 @@ public class LoginController extends HttpServlet {
                     String type = ac.getAccountTypeId();
                     if (type.equals("AD")) {
                         request.setAttribute("username", username);
-                        request.getRequestDispatcher("homeAdmin.jsp").forward(request, response);
+                        //request.getRequestDispatcher("/homeAdmin").forward(request, response);
+                        response.sendRedirect(request.getContextPath() + "/home");
                     } else {
                         request.setAttribute("username", username);
-                        request.getRequestDispatcher("home.jsp").forward(request, response);
+                        //request.getRequestDispatcher("/home").forward(request, response);
+                         response.sendRedirect(request.getContextPath() + "/home");
                     }
                 } else {
                     request.setAttribute("mess", "Username or password is not correct!");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
                     dispatcher.forward(request, response);
                 }
             } else {
                 request.setAttribute("mess", "Username is not exist!");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/login");
                 dispatcher.forward(request, response);
             }
 
         }else {
-            request.getRequestDispatcher("home.jsp").forward(request, response);
+            request.getRequestDispatcher("/home").forward(request, response);
         }
     }
 

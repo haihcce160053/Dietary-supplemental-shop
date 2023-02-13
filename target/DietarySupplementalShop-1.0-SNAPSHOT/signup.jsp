@@ -252,7 +252,6 @@
                                 <!-- Choose gender -->
                                 <div class="form-group">
                                     <label for="" style="margin-top: 20px;">Gender&nbsp;</label><label for="" style="color: red;">*</label>
-
                                 </div>
                                 <div class="form-group">
                                     <div class="radio-group">
