@@ -1,7 +1,7 @@
 <%-- 
     Document   : signup
     Created on : Feb 12, 2023, 9:14:07 AM
-    Author     : huynh chi hai
+    Author     : Huynh Chi Hai
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -12,8 +12,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author huynh
+ * @author Tran Quang Qui
  */
+
 public class HomeController extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -32,11 +33,9 @@ public class HomeController extends HttpServlet {
         Cookie cookie = null;
         Cookie[] cookies = null;
         cookies = request.getCookies();
-        // Call method get Account
-        AccountDAO daoAcc = new AccountDAO();
-        Account ac;
-        // Check cookies exist
-        if (cookies != null) {
+        AccountDAO daoAcc = new AccountDAO();  // Call method get Account
+        Account ac = new Account();   
+        if (cookies != null) {  // Check cookies exist
             for (int i = 0; i < cookies.length; i++) {
                 cookie = cookies[i];
                 // Get cookie in list cookies
@@ -58,7 +57,7 @@ public class HomeController extends HttpServlet {
                 }
             }
         } else {
-            request.getRequestDispatcher("/home").forward(request, response);
+            request.getRequestDispatcher("/home.jsp").forward(request, response);
         }
     }
 
