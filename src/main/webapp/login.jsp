@@ -258,7 +258,7 @@
                             </div>
                             <!-- Sign in with google -->
                                 <div class="orther-login" align="center">
-                                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/login/google&response_type=code
+                                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/Login/Google&response_type=code
 		   &client_id=931742517382-quh16iu9mem5r4gbo5r1kk1uos757t11.apps.googleusercontent.com&approval_prompt=force">                                    
                                         <button class="google-login" type="button">
                                             Login with Google

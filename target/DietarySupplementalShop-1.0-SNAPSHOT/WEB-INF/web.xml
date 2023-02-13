@@ -35,7 +35,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GoogleHandle</servlet-name>
-        <url-pattern>/login/google</url-pattern>
+        <url-pattern>/Login/Google</url-pattern>
     </servlet-mapping>
 
     <session-config>
