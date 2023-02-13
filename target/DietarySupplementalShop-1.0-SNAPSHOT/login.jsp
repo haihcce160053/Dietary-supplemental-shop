@@ -1,7 +1,7 @@
 <%-- 
     Document   : login
     Created on : Feb 12, 2023, 9:09:40 AM
-    Author     : huynh chi hai
+    Author     : Huynh Chi Hai
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -204,7 +204,7 @@
             </nav>
         </div>
     </header>
-        <form action="" method="POST" id="login-form">
+        <form action="/login" method="POST" id="login-form">
             <div class="container">
                 <div class="row justify-content-center" style="">
                     <div class="col-md-5">

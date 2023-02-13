@@ -27,7 +27,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>loginController</servlet-name>
-        <url-pattern>/Login/*</url-pattern>
+        <url-pattern>/login/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>default</servlet-name>
@@ -35,14 +35,15 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>GoogleHandle</servlet-name>
-        <url-pattern>/Login/Google</url-pattern>
+        <url-pattern>/login/Google</url-pattern>
     </servlet-mapping>
-
+    
     <session-config>
-     <welcome-file-list>
-            <welcome-file>
-                /
-            </welcome-file>
-        </welcome-file-list>
+        <session-timeout>
+            30
+        </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>/</welcome-file>
+    </welcome-file-list>
 </web-app>
